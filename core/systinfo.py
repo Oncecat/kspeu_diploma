@@ -5,6 +5,7 @@ from urllib.request import urlopen
 from getmac import get_mac_address
 import cpuinfo as cp
 
+
 #current system info
 os_info = str(platform.system() + " " + platform.release())
 print()
@@ -23,9 +24,10 @@ print("RAM frequency is" + str(mem_fr)) # Частота оперативной 
 
 #hdd f/t/u
 hdd = ps.disk_usage('/')
-hdd_t = hdd.total/(2**30)
+hdd_t = int(hdd.total/(2**30)*100)/100
 hdd_u = hdd.used/(2**30)
 hdd_f = hdd.free/(2**30)
+
 print("free hdd memory: %.2f Gb"% hdd_f)
 print("total hdd memory: %.2f Gb"% hdd_t)
 print("used hdd memory: %.2f Gb"% hdd_u)
@@ -55,8 +57,8 @@ while(' ' in motherboard_manufact):
 
 motherboard_manufact = "".join(motherboard_manufact)
 motherboard_product = "".join(motherboard_product)
-
-print("your motherboard: " + motherboard_manufact,motherboard_product)
+motherboard_total = motherboard_manufact + " " + motherboard_product
+print("your motherboard: " + motherboard_total)
 
 #cpu info
 cpu_cores = ps.cpu_count()

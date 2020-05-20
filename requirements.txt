@@ -9,3 +9,13 @@ dj-database-url
 python-decouple
 gunicorn
 whitenoise
+subprocess
+platform
+os
+re
+socket
+wmi
+urllib
+psutil
+getmac
+cpuinfo
