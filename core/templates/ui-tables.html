@@ -1,194 +1,170 @@
 {% extends 'layouts/base.html' %}
-{% block title %} UI Tables {% endblock %} 
+{% block title %} UI Tables {% endblock %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 {% block content %}
 
-{% if ip %}
-<ul>
- <li>{{ip}}</li>
-</ul>
-{%else %}
-<p>not working</p>
-{% endif %}
-
-
-{% for i in ip %}
-{{i}}
-{% endfor %}
-
-
 <div class="row">
-  <div class="col-md-12">
-    <div class="card ">
-      <div class="card-header">
-        <h4 class="card-title"> Таблица в блоке</h4>
-      </div>
-      
-              
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table tablesorter text-center" id="">
-            <thead class=" text-primary">
-              <tr>
-                <th>IP Адрес</th>
-                <th>Mac Адрес</th>
-                <th>Тип адреса</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-             
-            </tbody>
-          </table>
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title"> Таблица в блоке</h4>
+            </div>
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter text-center" id="">
+                        <thead class=" text-primary">
+                        <tr>
+                            <th>IP Адрес</th>
+                            <th>Mac Адрес</th>
+                            <th>Тип адреса</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ip in ips %}
+                        <tr>
+                            <td><a href="{% url 'ip_detail' slug=ip.slug%}">{{ip.ip}}</a></td>
+                            <td>{{ip.mac}}</td>
+                            {% if ip.type == '0' %}
+                            <td>Динамический</td>
+                            {%else%}
+                            <td>Статический</td>
+                            {%endif%}
+                        </tr>
+                        {%endfor%}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="col-md-12">
-    <div class="card  card-plain">
-      <div class="card-header">
-        <h4 class="card-title"> Другая таблица </h4>
-        <p class="category"> подзаголовок</p>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table tablesorter " id="">
-            <thead class=" text-primary">
-              <tr>
-                <th>Столбец 1</th>
-                <th>Столбец 2</th>
-                <th>Столбец 3</th>
-                <th class="text-center">
-                  Столбец 4
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td>
-                  #
-                </td>
-                <td class="text-center">
-                  #
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="col-md-12">
+        <div class="card  card-plain">
+            <div class="card-header">
+                <h4 class="card-title"> Другая таблица </h4>
+                <p class="category"> подзаголовок</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="">
+                        <thead class=" text-primary">
+                        <tr>
+                            <th>Столбец 1</th>
+                            <th>Столбец 2</th>
+                            <th>Столбец 3</th>
+                            <th class="text-center">
+                                Столбец 4
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                #
+                            </td>
+                            <td class="text-center">
+                                #
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 {% endblock content %}

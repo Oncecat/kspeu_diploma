@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+{% block title %} UI Tables {% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+
+<ul>
+    <li>
+        {{ip.ip}}
+    </li>
+    <li>
+        {{ip.mac}}
+    </li>
+    {% if ip.type == '0' %}
+    <li>Динамический</li>
+    {%else%}
+    <li>Статический</li>
+    {%endif%}
+    <li>
+        {{ip.slug}}
+    </li>
+</ul>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

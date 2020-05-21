@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls), # включить админку
-    url(r'^$', views.iptable),
+    # url(r'^$', views.iptable),
     path("", include("authentication.urls")),  
     path("", include("app.urls")),  
 ]
