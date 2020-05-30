@@ -25,11 +25,12 @@
 
 .font-icon-detail {
   text-align: center;
-  padding: 45px 0 30px;
+  padding: 45px 0;
   border: 1px solid #e44cc4;
   border-radius: .1875rem;
-  margin: 15px 0;
-  min-height: 168px;
+  margin: 15px 5px;
+  height: 168px;
+  /* min-width: auto; */
 }
 
 .font-icon-detail i {
@@ -40,8 +41,14 @@
 .font-icon-detail p {
   color: #e44cc4 !important;
   margin-top: 30px;
-  padding: 0 10px;
+  padding: 0 ;
   font-size: .7142em;
+  word-wrap: break-word;
+}
+
+.font-icon-detail h4{
+margin-left: 3px;
+/* margin-bottom: 3px; */
 }
 
 /*------------------------
@@ -81,8 +88,6 @@
 /*------------------------
   list icons
 -------------------------*/
-
-
 
 /*------------------------
   spinning icons
@@ -138,6 +143,7 @@
 /*------------------------
 	icons
 -------------------------*/
+
 
 .icon-alert-circle-exc::before {
   content: "\ea02";
@@ -538,3 +544,4 @@
 .icon-components::before {
   content: "\ea65";
 }
+

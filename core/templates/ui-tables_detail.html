@@ -1,26 +1,72 @@
 {% extends 'layouts/base.html' %}
 {% block title %} UI Tables {% endblock %}
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+<head>
+{% load static %}    
+{% block stylesheets %}
+   <link href="{% static 'assets/css/terminal.css' %}" rel="stylesheet" />
+   {% endblock stylesheets %}
+</head>
 {% block content %}
 
-<ul>
-    <li>
-        {{ip.ip}}
-    </li>
-    <li>
-        {{ip.mac}}
-    </li>
-    {% if ip.type == '0' %}
-    <li>Динамический</li>
-    {%else%}
-    <li>Статический</li>
-    {%endif%}
-    <li>
-        {{ip.slug}}
-    </li>
-</ul>
+<div class="card">
 
+
+    <div class=fakeMenu>
+        <div class="fakeButtons fakeClose"></div>
+        <div class="fakeButtons fakeMinimize"></div>
+        <div class="fakeButtons fakeZoom"></div>
+      </div>
+      <div class="fakeScreen">
+        <p class="line1">$ Choosen device {{ip.ip}} with mac {{ip.mac}}<span class="cursor1">_</span></p>
+        <p class="line2">[?] What more would you like? (Press space to select)<span class="cursor2">_</span></p>
+        <p class="line3">> {{respond}} 
+            {%if ports%}
+            The following ports are opened: 
+            {%for port in ports%}
+            {{port}}
+            {%endfor%}
+            {%endif%}
+            <span class="cursor3">_</span></p>
+      </div>
+</div>
+
+<div class="card">
+<form action="" method="post">
+    {%csrf_token%}
+    <p>Проверка порта</p>
+    <input type="text" name="port"><br><br>
+    <input type="submit" value="check_port">
+</form>
+</div>
+
+<div class="card">
+<form action="" method="post">
+    {%csrf_token%}
+    <p>Список открытых портов</p>
+    <br>
+    <input type="submit" value="list_ports" name="port_list">
+</form>
+
+</div>
+
+<div class="card">      
+    <form action="" method="post">
+        {%csrf_token%}
+        <p>Пинговать</p>
+        <br>
+        <input type="submit" value="ping" name="ping">
+    </form>
+<h4>
+{% for p in ping %}
+{%if '<br>' in p%}
+<br>
+{%else%}
+{{p}}
+{%endif%}
+{%endfor%}
+</h4>
+    </div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

@@ -1,0 +1,107 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} UI Icons {% endblock %} 
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% load custom_tags%}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="title">Характеристики вашей системы</h2>
+      </div>
+      <div class="card-body all-icons">
+        <div class="row">
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-laptop"></i>
+              <p>Ваша ОС</p>
+              <h4>{{sysinfo.os}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-tv-2"></i>
+              <p>Процессор</p>
+              <h4>{{sysinfo.cpu}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Видеокарта(ы)</p>
+              <h4>{{sysinfo.gpu}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-align-center"></i>
+              <p>Оперативная память</p>
+              <h4>{{sysinfo.ram}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p>Частота ОЗУ</p>
+              <h4>{{sysinfo.ramfreq}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-credit-card"></i>
+              <p>Общий объём HDD</p>
+              <h4>{{sysinfo.hdd_total}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-credit-card"></i>
+              <p>Занято на HDD</p>
+              <h4>{{sysinfo.hdd_used}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-credit-card"></i>
+              <p>Свободно на HDD</p>
+              <h4>{{sysinfo.hdd_free}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-planet"></i>
+              <p>Внешний IP-адрес</p>
+              <h4>{{sysinfo.white_ip}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-tag"></i>
+              <p>MAC-адрес</p>
+              <h4>{{sysinfo.mac}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-wifi"></i>
+              <p>Локальный IP-адрес</p>
+              <h4>{{sysinfo.local_ip}}</h4>
+            </div>
+          </div>
+          <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+            <div class="font-icon-detail">
+              <i class="tim-icons icon-components"></i>
+              <p>Материнская плата</p>
+              <h4>{{sysinfo.motherboard}}</h4>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}
