@@ -1,8 +1,3 @@
-/* body {
-    background-color: #272727;
-    padding: 10px;
-  } */
-  
   .fakeButtons {
     height: 10px;
     width: 10px;
@@ -15,7 +10,16 @@
     border-color: #9d252b;
     display: inline-block;
   }
-  
+  .roww{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -90px;
+    margin-left: -100px;
+    padding-left: 14%;
+  }
+
+
+
   .fakeMinimize {
     left: 11px;
     background-color: #ffc100;
@@ -33,7 +37,7 @@
     box-sizing: border-box;
     height: 25px;
     background-color: #bbb;
-    margin: 0 auto;
+    margin: 0 10%;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
@@ -42,8 +46,8 @@
     background-color: #151515;
     box-sizing: border-box;
     width: -webkit-fill-available;
-    height: 200px;
-    margin: 0 auto;
+    height: 350px;
+    margin: 0 10%;
     padding: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -59,7 +63,23 @@
     overflow: hidden;
     width: 0;
   }
-  
+
+.forms{
+/* width: 100%; */
+clear:both;
+}  
+
+th .card {
+    float: left; /*Задаем обтекание*/
+    margin: 0;
+    margin-left: 70px;
+    margin-top: 50px;
+    /* padding-top: 50px; */
+    width: 300px; /*Фиксируем ширину блока*/
+    padding: 40px;
+    height: 150px;
+    text-align: center; /*Центрируем текст по горизонтали*/ 
+}
   span {
     color: #fff;
     font-weight: bold;
@@ -104,10 +124,10 @@
   }
   
   .cursor3 {
-    -webkit-animation: blink .5s 6.45s 2 forwards;
-    -moz-animation: blink .5s 6.45s 2 forwards;
-    -o-animation: blink .5s 6.45s 2 forwards;
-    animation: blink .5s 6.45s 2 forwards;
+    -webkit-animation: blink .5s 6.45s infinite;
+    -moz-animation: blink .5s 6.45s infinite;
+    -o-animation: blink .5s 6.45s infinite;
+    animation: blink .5s 6.45s infinite;
   }
   
   .line4 {

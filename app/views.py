@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django import template
 import subprocess as sb
-import platform, os, re, socket, urllib, time, threading
+import platform, os, re, socket, urllib, time
 import psutil as ps
 from urllib.request import urlopen
 from getmac import get_mac_address
@@ -55,7 +55,6 @@ def sysinfo(request):
     except:
         info.setdefault('white_ip','Ошибка получения адреса!')
  
-
     # get local ip
     hostname = socket.gethostname()    
     local_ip = socket.gethostbyname(hostname)
@@ -88,8 +87,7 @@ def sysinfo(request):
     gpu = list(str(sb.check_output('wmic PATH Win32_videocontroller GET name').decode('cp866').replace('Name',' ').replace('\n','')))
     gpu = "".join(gpu)
     info.setdefault('gpu',gpu)
-
-    return render(request, 'ui-sysinfo.html',{'sysinfo':info}) # дописать тут
+    return render(request, 'ui-sysinfo.html',{'sysinfo':info}) 
 
 def pages(request):
     context = {}
@@ -110,9 +108,6 @@ def iptable(request):
     '''
         Для начала я создаю словарь new_dict, чтобы было удобнее потом работать с данными,
         после чего создаю новые экземпляры Myip. А потом выбираю все объекты Myip и передаю их в шаблон.
-        Если тебе нужно передавать данные только одного юзера с его машины(Я так понял), то сохрани какое-нибудь поле,
-        которое определяет этого юзера, как я понимаю - это mac(Только я хз какой), и по нему запусти фильтрацию
-        в переменной "ips"
     '''
     call = sb.check_output('arp -a').decode('cp866')
     new = list(call.split(" "))
@@ -176,13 +171,14 @@ def iptable_detail(request, slug):
                     ports.append(port)
                     sock.close()
             if len(ports) == 0:
-                ports.append('На данном узле открытых портов не найдено!')
-            
+                ports.append('all ports are closed!')
         elif request.POST.get('ping'):
-            call = sb.check_output('ping3 -w 1 %s' % target_ip).decode('cp866').replace('\r',' <br> ').replace('\n','')
-            ping_status = list(call.split(" "))
-        elif request.POST.get('add_desc'):
-            pass
+            try:
+                call = sb.check_output('ping3 -w 1 %s' % target_ip).decode('cp866').replace('\r','  ').replace('\n','')
+                ping_status = list(call.split(" "))
+            except:
+                ping_st = "Device is unavailable to connect!"
+                ping_status = list(ping_st.split(" "))
     return render(request, 'ui-tables_detail.html', {
     'ip': ip,
     'respond': respond,
@@ -190,10 +186,8 @@ def iptable_detail(request, slug):
     'ping':ping_status,
     })
 
-
 '''     раскомментить чтобы возвращать 500ую
     except:
-
         html_template = loader.get_template( 'error-500.html' )
         return HttpResponse(html_template.render(context, request))
 

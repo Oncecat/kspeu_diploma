@@ -9,8 +9,6 @@
 </head>
 {% block content %}
 
-<div class="card">
-
 
     <div class=fakeMenu>
         <div class="fakeButtons fakeClose"></div>
@@ -19,54 +17,61 @@
       </div>
       <div class="fakeScreen">
         <p class="line1">$ Choosen device {{ip.ip}} with mac {{ip.mac}}<span class="cursor1">_</span></p>
-        <p class="line2">[?] What more would you like? (Press space to select)<span class="cursor2">_</span></p>
-        <p class="line3">> {{respond}} 
-            {%if ports%}
-            The following ports are opened: 
-            {%for port in ports%}
-            {{port}}
-            {%endfor%}
+        <p class="line2">> {{respond}} 
+            {%if ports%} The following ports are opened: 
+                {%for port in ports%}
+                    {{port}}
+                {%endfor%}
+            {% else %}
+                {% for p in ping %}
+                        {{p}}
+                {% endfor %}
             {%endif%}
-            <span class="cursor3">_</span></p>
+            <span class="cursor2">_</span></p>
+            <p class="line3">[?] What more would you like? (Choose an option)<span class="cursor3">_</span></p>
       </div>
+
+
+<div class="roww">
+    <div class="col-md-12">
+      <div class="card-body all-icons">
+        <div class="roww">
+                <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+                    <div class="font-icon-detail">
+                        <form action="" method="post">
+                        {%csrf_token%}
+                        <h3>Проверка порта</h3>
+                        <input type="text" name="port" class="form-control"><br> <br>
+                        <button type="submit"  name="check_port" class="btn btn-fill btn-primary"> Проверить </button> 
+                        </form>
+                    </div>    
+                </div>
+            
+            <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+                <div class="font-icon-detail">
+                    <form action="" method="post">
+                    {%csrf_token%}
+                    <h3>Открытые порты </h3>
+                    <br> <br> <br>
+                    <button type="submit" value="port_list" name="port_list" class="btn btn-fill btn-primary"> Узнать </button>
+                    </form> 
+                </div>
+            </div>
+            <div class="font-icon-list col-lg-3 col-md-5 col-xs-6">
+                <div class="font-icon-detail">
+                    <form action="" method="post">
+                    {%csrf_token%}
+                    <h3>Доступность узла</h3>
+                    <br><br> <br>
+                    <button type="submit" name="ping" value="ping" class="btn btn-fill btn-primary"> Проверить </button>
+                    </form>
+                </div>
+            </div> 
+        </div>
+        </div>     
+    </div>  
 </div>
 
-<div class="card">
-<form action="" method="post">
-    {%csrf_token%}
-    <p>Проверка порта</p>
-    <input type="text" name="port"><br><br>
-    <input type="submit" value="check_port">
-</form>
-</div>
-
-<div class="card">
-<form action="" method="post">
-    {%csrf_token%}
-    <p>Список открытых портов</p>
-    <br>
-    <input type="submit" value="list_ports" name="port_list">
-</form>
-
-</div>
-
-<div class="card">      
-    <form action="" method="post">
-        {%csrf_token%}
-        <p>Пинговать</p>
-        <br>
-        <input type="submit" value="ping" name="ping">
-    </form>
-<h4>
-{% for p in ping %}
-{%if '<br>' in p%}
-<br>
-{%else%}
-{{p}}
-{%endif%}
-{%endfor%}
-</h4>
-    </div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

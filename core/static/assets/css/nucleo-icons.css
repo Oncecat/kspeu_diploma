@@ -25,11 +25,11 @@
 
 .font-icon-detail {
   text-align: center;
-  padding: 45px 0;
-  border: 1px solid #e44cc4;
+  padding: 35px 0;
+  border: 1.5px solid #e44cc4;
   border-radius: .1875rem;
   margin: 15px 5px;
-  height: 168px;
+  height: 200px;
   /* min-width: auto; */
 }
 

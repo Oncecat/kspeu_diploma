@@ -24,8 +24,3 @@ class Myip(models.Model):
         self.slug = '{}'.format(str(self.ip))
         super(Myip, self).save()
    
-
-
-    # def save_desc(self, *args, **kwargs):
-    #     self.description = '{}'.format(str(self.description))
-    #     super(Myip,self).save()

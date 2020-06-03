@@ -7,9 +7,3 @@ class Descform(forms.ModelForm):
         # exclude = ['ip','mac','type','slug']
         fields = ('description',)
 
-
-    # def save_description(self):
-    #     instance = super(Descform, self).save()
-    #     instance.description = self.description
-    #     instance.save()
-    #     return instance

@@ -1,0 +1,8 @@
+.main-page-blocks{
+    text-align: center;
+    padding: 35px 0;
+    border: 1.5px solid #e44cc4;
+    border-radius: .1875rem;
+    margin: 35px 30px 30px;
+    height: 200px;
+}
