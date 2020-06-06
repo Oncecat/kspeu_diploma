@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django import template
 import subprocess as sb
-import platform, os, re, socket, urllib, time
+import platform, os, re, socket, urllib
 import psutil as ps
 from urllib.request import urlopen
 from getmac import get_mac_address
