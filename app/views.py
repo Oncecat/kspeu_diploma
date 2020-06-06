@@ -5,6 +5,7 @@ from django import template
 import subprocess as sb
 import platform, os, re, socket, urllib
 import psutil as ps
+import threading
 from urllib.request import urlopen
 from getmac import get_mac_address
 import cpuinfo as cp
@@ -141,6 +142,18 @@ def iptable(request):
     return render(request, 'ui-tables.html', {'ips': ips})
 
 
+def portscaning(target,port,ports):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(0.01)
+    try:
+        connect = s.connect((target,port))
+        ports.append(port)
+        connect.close()
+    except:
+        pass
+    
+
+
 # данные для рендера страницы с данными, проверки портов, ip 
 def iptable_detail(request, slug):
     ip = Myip.objects.get(slug=slug)
@@ -161,15 +174,10 @@ def iptable_detail(request, slug):
                 respond = "port " + port + " is opened!"
             sock.close() 
         elif request.POST.get('port_list'):
-            for port in range (1,1000):
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                try:
-                    sock.connect((target_ip,int(port)))
-                except:
-                    sock.close()
-                else:
-                    ports.append(port)
-                    sock.close()
+            for i in range(10000):
+                t = threading.Thread(target=portscaning, kwargs={'target':target_ip,'port':i,'ports':ports})
+                t.start()
+            set(ports)
             if len(ports) == 0:
                 ports.append('all ports are closed!')
         elif request.POST.get('ping'):
